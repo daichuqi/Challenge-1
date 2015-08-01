@@ -15,6 +15,7 @@ angular.module('challengeApp.detail', [])
         $scope.hasAccepted = res.participants.some(function(participant) { return participant.id === $scope.loginUser.id && participant.accepted; });
         callback(res.participants);
 
+
       });
     };
 
@@ -26,14 +27,15 @@ angular.module('challengeApp.detail', [])
           for(var j=0;j<players.length;j++){
             if(players[j].id === $scope.userChallenges[i].userId){
               $scope.userChallenges[i].player = players[j];
-              if($scope.userChallenges[i].userId === $scope.loginUser.id){
+              if($scope.userChallenges[i].userId === $scope.loginUser.id && $scope.challengeData.started!=='Completed'){
                 $scope.userIsplaying = true
+                // console.log($scope.challengeData)
               }
               // $scope.accept = $scope.userChallenges[i]
             }
           }
         }
-        console.log($scope.userChallenges)
+
 
       });
     });
